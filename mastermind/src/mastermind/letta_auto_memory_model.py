@@ -164,7 +164,7 @@ class LettaAutoMemoryModel:
 
         if not tools:
             print("- <no-tools-visible>")
-            print("  ⚠️ 没看到任何工具。若希望“纯 Letta 自主写记忆”，请确认服务端启用默认记忆工具，或升级 letta_server/letta_client。")
+            print(" 没看到任何工具。若希望“纯 Letta 自主写记忆”，请确认服务端启用默认记忆工具，或升级 letta_server/letta_client。")
             return
 
         names = []
@@ -181,9 +181,9 @@ class LettaAutoMemoryModel:
         mem_new = any(n in ("memory_insert", "memory_replace") for n in names)
         mem_old = any(n in ("core_memory_append", "core_memory_replace") for n in names)
         if not (mem_new or mem_old):
-            print("  ⚠️ 未发现记忆工具（memory_insert/memory_replace 或 core_memory_*）。Agent 无法“自主写记忆”。")
+            print("未发现记忆工具（memory_insert/memory_replace 或 core_memory_*）。Agent 无法“自主写记忆”。")
         else:
-            print("  ✅ 发现记忆相关工具（新或旧）。若仍然不写，多半是模型没有触发工具调用。")
+            print(" 发现记忆相关工具（新或旧）。若仍然不写，多半是模型没有触发工具调用。")
 
     def _print_tool_calls(self, resp_obj: Any):
         """尽量兼容地打印是否检测到“工具调用意图”（tool calls / actions）。"""
@@ -259,7 +259,7 @@ class LettaAutoMemoryModel:
 
             # 不造默认输出；如果模型没回内容，就返回空字符串
             if not content and self.verbose:
-                print("[Letta] ⚠️ Empty reply (no output from model)")
+                print("[Letta] Empty reply (no output from model)")
             return chat_history + [{"role": "assistant", "content": content}]
 
         except Exception as e:
@@ -288,7 +288,7 @@ class LettaAutoMemoryModel:
                     if self.print_mem_each_round:
                         self._print_memory_blocks()
                     if not content and self.verbose:
-                        print("[Letta] ⚠️ Empty reply (fallback, no output)")
+                        print("[Letta] Empty reply (fallback, no output)")
                     return chat_history + [{"role": "assistant", "content": content}]
                 except Exception as e2:
                     if self.verbose:
