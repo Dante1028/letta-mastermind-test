@@ -15,7 +15,7 @@ This container includes the Letta API server and its PostgreSQL database.
 >  Replace the API key below with **your own** OpenAI API key before running.
 
 ```powershell
-docker run -v E:\study\CAPSTONE\letta-ai\data\pgdata:/var/lib/postgresql/data `
+docker run -v E:\CAPSTONE\letta-ai\data\pgdata:/var/lib/postgresql/data `
   -p 8283:8283 `
   -e OPENAI_API_KEY="sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" `
   letta/letta:latest
